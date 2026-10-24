@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unidade 1 - Tarefa 1 | Desenvolvimento Web 2</title>
+  </head>
+  <body>
+    <h1>Atividade 1 - JavaScript (IFCE)</h1>
+    <p>
+      Abra o Console do Modo Desenvolvedor (pressione <strong>F12</strong>) para
+      visualizar as saídas do JavaScript.
+    </p>
+
+    <script>
+      // ========================================================================
+      // 1. AVALIAÇÃO DE RISCO DE CRÉDITO
+      // ========================================================================
+      function avaliarRiscoDeCredito(rendaMensal, dividaAtual) {
+        const renda = parseFloat(rendaMensal);
+        const divida = parseFloat(dividaAtual);
+        const TE = (divida / renda) * 100;
+
+        if (TE < 10) {
+          return "Risco Baixo";
+        } else if (TE >= 10 && TE < 30) {
+          return "Risco Moderado";
+        } else {
+          return "Risco Alto";
+        }
+      }
+
+      const rendaUsuario = prompt("1. Informe a sua renda mensal:");
+      const dividaUsuario = prompt("1. Informe a sua dívida atual:");
+      const resultadoRisco = avaliarRiscoDeCredito(rendaUsuario, dividaUsuario);
+
+      console.log("--- 1. Avaliação de Risco de Crédito ---");
+      console.log(`Classificação de Risco: ${resultadoRisco}`);
+
+      // ========================================================================
+      // 2. MANIPULAÇÃO DE ARRAY COM MÉTODOS DE ARRAY
+      // ========================================================================
+      const numeros = [];
+      let adicionarMais = true;
+
+      while (adicionarMais) {
+        const entradaNum = prompt(
+          "2. Digite um número para o array (ou clique em Cancelar / deixe vazio para parar):",
+        );
+
+        if (entradaNum === null || entradaNum.trim() === "") {
+          if (numeros.length === 0) {
+            alert("Insira pelo menos um número!");
+            continue;
+          }
+          adicionarMais = false;
+        } else {
+          const valor = parseFloat(entradaNum);
+          if (!isNaN(valor)) {
+            numeros.push(valor);
+          } else {
+            alert("Digite um número válido!");
+          }
+        }
+      }
+
+      console.log("\n--- 2. Manipulação de Array ---");
+      console.log(`Array original: [${numeros.join(", ")}]`);
+
+      // a) Maior e menor valor com Math.max(...array) e Math.min(...array)
+      console.log(
+        `a) Maior valor: ${Math.max(...numeros)} | Menor valor: ${Math.min(...numeros)}`,
+      );
+
+      // b) Novo array dobro com map()
+      const dobro = numeros.map((n) => n * 2);
+      console.log("b) Array dobro:", dobro);
+
+      // c) Números maiores que 5 com filter()
+      const maioresQue5 = numeros.filter((n) => n > 5);
+      console.log("c) Números maiores que 5:", maioresQue5);
+
+      // ========================================================================
+      // 3. CRIAÇÃO E MANIPULAÇÃO DE OBJETO (SEM CLASSE)
+      // ========================================================================
+      console.log("\n--- 3. Criação e Manipulação de Objeto ---");
+
+      const carro = {
+        marca: "Ford",
+        modelo: "Fiesta",
+        ano: 2011,
+        exibirInfo: function () {
+          console.log(
+            `Marca: ${this.marca} | Modelo: ${this.modelo} | Ano: ${this.ano}`,
+          );
+        },
+      };
+
+      // a) Chame o método exibirInfo()
+      carro.exibirInfo();
+
+      // b) Adicione dinamicamente a propriedade cor com o valor "Preto"
+      carro.cor = "Preto";
+
+      // c) Atualize o valor de ano para o ano atual (2025)
+      carro.ano = 2025;
+
+      // d) Exiba o objeto completo no console
+      console.log(carro);
+
+      // ========================================================================
+      // 4. ORIENTAÇÃO A OBJETOS (COM CLASSE E INSTÂNCIA)
+      // ========================================================================
+      console.log("\n--- 4. Orientação a Objetos (Classe Livro) ---");
+
+      class Livro {
+        constructor(titulo, autor, ano) {
+          this.titulo = titulo;
+          this.autor = autor;
+          this.ano = ano;
+        }
+
+        detalhes() {
+          console.log(
+            `Livro: ${this.titulo} | Autor: ${this.autor} | Ano: ${this.ano}`,
+          );
+        }
+      }
+
+      // a) Duas instâncias com dados diferentes
+      const livro1 = new Livro(
+        "JavaScript: O Guia Definitivo",
+        "David Flanagan",
+        2012,
+      );
+      const livro2 = new Livro("Aprendendo Node", "Shelley Powers", 2017);
+
+      // b) Chamando detalhes() para ambos
+      livro1.detalhes();
+      livro2.detalhes();
+
+      // ========================================================================
+      // 5. LAÇOS, CONDICIONAIS E MANIPULAÇÃO DE STRING
+      // ========================================================================
+      console.log("\n--- 5. Manipulação de String e Palíndromo ---");
+
+      const palavra = prompt("5. Informe uma palavra:") || "";
+
+      // a) Exiba a quantidade de caracteres da palavra
+      console.log(
+        `a) A palavra "${palavra}" possui ${palavra.length} caracteres.`,
+      );
+
+      // b) Verifique se é um palíndromo com split(''), reverse() e join('')
+      const palavraFormatada = palavra.trim().toLowerCase();
+      const palavraReversa = palavraFormatada.split("").reverse().join("");
+
+      if (palavraFormatada === palavraReversa && palavraFormatada.length > 0) {
+        console.log(`b) A palavra "${palavra}" é um palíndromo!`);
+      } else {
+        console.log(`b) A palavra "${palavra}" NÃO é um palíndromo.`);
+      }
+    </script>
+  </body>
+</html>
