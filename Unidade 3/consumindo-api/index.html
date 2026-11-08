@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busca Pokémon - PokéAPI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="topo">
+        <h1>Explorador da Pokédex</h1>
+        <p class="subtitulo">
+          Consulte dados de Pokémon em tempo real consumindo a PokéAPI com
+          fetch, async e await.
+        </p>
+      </header>
+
+      <section class="painel-busca">
+        <form id="formBusca" novalidate>
+          <div class="campo-grupo">
+            <label for="campoPokemon">Nome ou número do Pokémon</label>
+            <div class="linha-input">
+              <input
+                type="text"
+                id="campoPokemon"
+                placeholder="Ex.: pikachu, charizard, 25..."
+                autocomplete="off"
+              />
+              <button type="submit" class="botao">Buscar</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="sugestoes">
+          <span>Sugestões rápidas:</span>
+          <button type="button" class="chip" data-nome="pikachu">
+            Pikachu
+          </button>
+          <button type="button" class="chip" data-nome="bulbasaur">
+            Bulbasaur
+          </button>
+          <button type="button" class="chip" data-nome="charmander">
+            Charmander
+          </button>
+          <button type="button" class="chip" data-nome="squirtle">
+            Squirtle
+          </button>
+          <button type="button" class="chip" data-nome="eevee">Eevee</button>
+          <button type="button" class="chip" data-nome="lucario">
+            Lucario
+          </button>
+        </div>
+      </section>
+
+      <p id="mensagem" class="mensagem" role="status"></p>
+
+      <section id="resultado" class="resultado"></section>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
